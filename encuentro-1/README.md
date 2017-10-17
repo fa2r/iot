@@ -8,6 +8,9 @@ Encuentro 1
 Fabián Ramírez
 framirez@vates.com
 
+---
+https://github.com/fa2r/iot
+
 <!-- slide -->
 ## Contenidos
 

@@ -25,11 +25,15 @@ https://github.com/fa2r/iot
 <!-- slide -->
 ## Raspberry Pi
 Raspberry como Gateway
+![](images/raspberry.png)
 
 <!-- slide -->
 ### Acceso remoto
 - VNC
 - Putty
+
+
+https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe
 
 https://oscarliang.com/setup-raspberry-pi-for-remote-access/
 

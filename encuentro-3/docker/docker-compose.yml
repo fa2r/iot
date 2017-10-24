@@ -1,0 +1,53 @@
+# Para poder levantar ElasticSearch ejecutar en el host:
+# sudo sysctl -w vm.max_map_count=262144
+
+version: '2'
+
+# Node-Red
+# MQTT
+# ElasticSearch
+# Kibana
+
+services:
+    nodered:
+#      image: nodered/node-red-docker
+      build: .
+      container_name: iot-nodered
+      ports:
+        - "1880:1880"
+      volumes:
+        - ./data/node-red:/data
+      depends_on:
+        - iot-mqtt
+
+    iot-mqtt:
+        container_name: iot-mqtt
+        image: eclipse-mosquitto:1.4.10
+#        volumes:
+#            - ./config/mosquitto:/mosquitto/config
+#            - ./data:/mosquitto/data
+#            - ./log/mosquitto:/mosquitto/log
+        ports:
+            - "1883:1883"
+#            - "8883:8883"
+#            - "9001:9001"
+
+    elasticsearch:
+        container_name: iot-elasticsearch
+        image: elasticsearch:5.3.2
+        volumes:
+            - ./config:/usr/share/elasticsearch/config
+            #- ./esdata:/usr/share/elasticsearch/data
+        ports:
+            - "9200:9200"
+#            - "9300:9300"
+
+    kibana:
+        container_name: iot-kibana
+        image: kibana:5.3.1
+        environment:
+            - ELASTICSEARCH_URL=http://elasticsearch:9200
+        links:
+            - elasticsearch:elasticsearch
+        ports:
+            - "5601:5601"

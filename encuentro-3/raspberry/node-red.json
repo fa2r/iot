@@ -1,0 +1,496 @@
+[
+  {
+    "id": "1dceb6a1.f7f659",
+    "type": "tab",
+    "label": "Flow 1"
+  },
+  {
+    "id": "bec5a1d3.c6e26",
+    "type": "mqtt in",
+    "z": "1dceb6a1.f7f659",
+    "name": "Temperature",
+    "topic": "/1/temp",
+    "qos": "2",
+    "broker": "7f0d7305.96e6ac",
+    "x": 110,
+    "y": 100,
+    "wires": [
+      [
+        "ab985c1e.658bf",
+        "ce14c625.3db528"
+      ]
+    ]
+  },
+  {
+    "id": "ab985c1e.658bf",
+    "type": "ui_gauge",
+    "z": "1dceb6a1.f7f659",
+    "name": "",
+    "group": "a0a06848.799728",
+    "order": 1,
+    "width": 0,
+    "height": 0,
+    "gtype": "gage",
+    "title": "Temperatura",
+    "label": "C",
+    "format": "{{value | number:2}}",
+    "min": 0,
+    "max": "45",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "x": 410,
+    "y": 100,
+    "wires": []
+  },
+  {
+    "id": "82257881.8e2268",
+    "type": "mqtt in",
+    "z": "1dceb6a1.f7f659",
+    "name": "LDR",
+    "topic": "/1/ldr",
+    "qos": "2",
+    "broker": "7f0d7305.96e6ac",
+    "x": 90,
+    "y": 220,
+    "wires": [
+      [
+        "d86bab24.600358",
+        "36ec4a93.e37846",
+        "555aac48.306d64"
+      ]
+    ]
+  },
+  {
+    "id": "d86bab24.600358",
+    "type": "ui_gauge",
+    "z": "1dceb6a1.f7f659",
+    "name": "",
+    "group": "c0273367.2364e",
+    "order": 1,
+    "width": 0,
+    "height": 0,
+    "gtype": "gage",
+    "title": "Luminancia",
+    "label": "Lux",
+    "format": "{{value | number:2}}",
+    "min": 0,
+    "max": "1024",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "x": 410,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "36ec4a93.e37846",
+    "type": "ui_chart",
+    "z": "1dceb6a1.f7f659",
+    "name": "",
+    "group": "c0273367.2364e",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "label": "chart",
+    "chartType": "line",
+    "legend": "false",
+    "xformat": "HH:mm:ss",
+    "interpolate": "linear",
+    "nodata": "",
+    "dot": false,
+    "ymin": "",
+    "ymax": "",
+    "removeOlder": 1,
+    "removeOlderPoints": "",
+    "removeOlderUnit": "3600",
+    "cutout": 0,
+    "useOneColor": false,
+    "colors": [
+      "#1f77b4",
+      "#aec7e8",
+      "#ff7f0e",
+      "#2ca02c",
+      "#98df8a",
+      "#d62728",
+      "#ff9896",
+      "#9467bd",
+      "#c5b0d5"
+    ],
+    "useOldStyle": false,
+    "x": 390,
+    "y": 180,
+    "wires": [
+      [],
+      []
+    ]
+  },
+  {
+    "id": "dba5ff1a.aea17",
+    "type": "ui_button",
+    "z": "1dceb6a1.f7f659",
+    "name": "Play Sound",
+    "group": "1ce36ba0.724384",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "label": "Sound",
+    "color": "",
+    "bgcolor": "",
+    "icon": "",
+    "payload": "sound",
+    "payloadType": "str",
+    "topic": "/1/play",
+    "x": 110,
+    "y": 300,
+    "wires": [
+      [
+        "6071623d.553ddc"
+      ]
+    ]
+  },
+  {
+    "id": "63226f58.0cd9e",
+    "type": "ui_switch",
+    "z": "1dceb6a1.f7f659",
+    "name": "",
+    "label": "Led",
+    "group": "1ce36ba0.724384",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "decouple": "false",
+    "topic": "/1/led",
+    "style": "",
+    "onvalue": "true",
+    "onvalueType": "bool",
+    "onicon": "",
+    "oncolor": "",
+    "offvalue": "false",
+    "offvalueType": "bool",
+    "officon": "",
+    "offcolor": "",
+    "x": 430,
+    "y": 400,
+    "wires": [
+      [
+        "660f9e2f.ad958"
+      ]
+    ]
+  },
+  {
+    "id": "660f9e2f.ad958",
+    "type": "mqtt out",
+    "z": "1dceb6a1.f7f659",
+    "name": "Led",
+    "topic": "/1/led",
+    "qos": "0",
+    "retain": "false",
+    "broker": "7f0d7305.96e6ac",
+    "x": 590,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "72092987.349d98",
+    "type": "ui_switch",
+    "z": "1dceb6a1.f7f659",
+    "name": "",
+    "label": "Luz",
+    "group": "1ce36ba0.724384",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "decouple": "false",
+    "topic": "/1/light",
+    "style": "",
+    "onvalue": "true",
+    "onvalueType": "bool",
+    "onicon": "",
+    "oncolor": "",
+    "offvalue": "false",
+    "offvalueType": "bool",
+    "officon": "",
+    "offcolor": "",
+    "x": 90,
+    "y": 620,
+    "wires": [
+      [
+        "9d82ca7b.da0b28"
+      ]
+    ]
+  },
+  {
+    "id": "9d82ca7b.da0b28",
+    "type": "mqtt out",
+    "z": "1dceb6a1.f7f659",
+    "name": "Light",
+    "topic": "/1/light",
+    "qos": "0",
+    "retain": "false",
+    "broker": "7f0d7305.96e6ac",
+    "x": 430,
+    "y": 620,
+    "wires": []
+  },
+  {
+    "id": "6071623d.553ddc",
+    "type": "mqtt out",
+    "z": "1dceb6a1.f7f659",
+    "name": "Play",
+    "topic": "/1/play",
+    "qos": "0",
+    "retain": "false",
+    "broker": "7f0d7305.96e6ac",
+    "x": 410,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "ce14c625.3db528",
+    "type": "ui_chart",
+    "z": "1dceb6a1.f7f659",
+    "name": "",
+    "group": "a0a06848.799728",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "label": "chart",
+    "chartType": "line",
+    "legend": "false",
+    "xformat": "HH:mm:ss",
+    "interpolate": "linear",
+    "nodata": "",
+    "dot": false,
+    "ymin": "",
+    "ymax": "",
+    "removeOlder": 1,
+    "removeOlderPoints": "",
+    "removeOlderUnit": "3600",
+    "cutout": 0,
+    "useOneColor": false,
+    "colors": [
+      "#1f77b4",
+      "#aec7e8",
+      "#ff7f0e",
+      "#2ca02c",
+      "#98df8a",
+      "#d62728",
+      "#ff9896",
+      "#9467bd",
+      "#c5b0d5"
+    ],
+    "useOldStyle": false,
+    "x": 387,
+    "y": 60,
+    "wires": [
+      [],
+      []
+    ]
+  },
+  {
+    "id": "bbbbecd.7302d1",
+    "type": "mqtt in",
+    "z": "1dceb6a1.f7f659",
+    "name": "Button",
+    "topic": "/1/button",
+    "qos": "2",
+    "broker": "7f0d7305.96e6ac",
+    "x": 94,
+    "y": 539,
+    "wires": [
+      [
+        "c27d154f.73ce88"
+      ]
+    ]
+  },
+  {
+    "id": "3ef9b994.dd34a6",
+    "type": "ui_toast",
+    "z": "1dceb6a1.f7f659",
+    "position": "top right",
+    "displayTime": "3",
+    "highlight": "",
+    "outputs": 0,
+    "ok": "OK",
+    "cancel": "",
+    "topic": "",
+    "name": "",
+    "x": 490,
+    "y": 540,
+    "wires": []
+  },
+  {
+    "id": "c27d154f.73ce88",
+    "type": "function",
+    "z": "1dceb6a1.f7f659",
+    "name": "Led State",
+    "func": "context.state = context.state | false;\ncontext.state = !context.state;\nmsg.payload = context.state;\n\nreturn msg ;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 260,
+    "y": 540,
+    "wires": [
+      [
+        "3ef9b994.dd34a6",
+        "63226f58.0cd9e"
+      ]
+    ]
+  },
+  {
+    "id": "555aac48.306d64",
+    "type": "switch",
+    "z": "1dceb6a1.f7f659",
+    "name": "Luz",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "lt",
+        "v": "300",
+        "vt": "str"
+      },
+      {
+        "t": "gt",
+        "v": "300",
+        "vt": "str"
+      }
+    ],
+    "checkall": "false",
+    "outputs": 2,
+    "x": 390,
+    "y": 260,
+    "wires": [
+      [
+        "9117cb91.78f068"
+      ],
+      [
+        "a8cfba3b.d59a48"
+      ]
+    ]
+  },
+  {
+    "id": "cc71027c.da24d",
+    "type": "mqtt out",
+    "z": "1dceb6a1.f7f659",
+    "name": "Light",
+    "topic": "/1/light",
+    "qos": "0",
+    "retain": "false",
+    "broker": "7f0d7305.96e6ac",
+    "x": 730,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "9117cb91.78f068",
+    "type": "template",
+    "z": "1dceb6a1.f7f659",
+    "name": "On",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "true",
+    "output": "str",
+    "x": 590,
+    "y": 240,
+    "wires": [
+      [
+        "cc71027c.da24d"
+      ]
+    ],
+    "outputLabels": [
+      "/1/light"
+    ]
+  },
+  {
+    "id": "a8cfba3b.d59a48",
+    "type": "template",
+    "z": "1dceb6a1.f7f659",
+    "name": "Off",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "false",
+    "output": "str",
+    "x": 590,
+    "y": 280,
+    "wires": [
+      [
+        "cc71027c.da24d"
+      ]
+    ],
+    "outputLabels": [
+      "/1/light"
+    ]
+  },
+  {
+    "id": "7f0d7305.96e6ac",
+    "type": "mqtt-broker",
+    "z": "",
+    "broker": "iot-mqtt",
+    "port": "1883",
+    "clientid": "",
+    "usetls": false,
+    "compatmode": true,
+    "keepalive": "60",
+    "cleansession": true,
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": ""
+  },
+  {
+    "id": "a0a06848.799728",
+    "type": "ui_group",
+    "z": "",
+    "name": "Temperatura",
+    "tab": "240a42d4.6d22de",
+    "order": 2,
+    "disp": true,
+    "width": "6"
+  },
+  {
+    "id": "c0273367.2364e",
+    "type": "ui_group",
+    "z": "",
+    "name": "Luminancia",
+    "tab": "240a42d4.6d22de",
+    "order": 3,
+    "disp": true,
+    "width": "6"
+  },
+  {
+    "id": "1ce36ba0.724384",
+    "type": "ui_group",
+    "z": "",
+    "name": "Controles",
+    "tab": "240a42d4.6d22de",
+    "order": 1,
+    "disp": true,
+    "width": "6"
+  },
+  {
+    "id": "240a42d4.6d22de",
+    "type": "ui_tab",
+    "z": "",
+    "name": "Home",
+    "icon": "dashboard",
+    "order": 1
+  }
+]

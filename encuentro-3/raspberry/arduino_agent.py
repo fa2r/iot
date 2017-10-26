@@ -51,15 +51,13 @@ def on_message(mosq, obj, msg):
 
 client = paho.Client()
 
-client.message_callback_add("/1/led/#", on_message_led)
-client.message_callback_add("/1/light/#", on_message_light)
-client.message_callback_add("/1/play/#", on_message_play)
+client.message_callback_add('/{}/led/#'.format(DeviceId), on_message_led)
+client.message_callback_add('/{}/light/#'.format(DeviceId), on_message_light)
+client.message_callback_add('/{}/play/#'.format(DeviceId), on_message_play)
 client.on_message = on_message
 
 client.connect(MqttHost, port=MqttPort, keepalive=60, bind_address="")
 client.subscribe("/#", 0)
-
-# client.loop_forever()
 
 
 # Insertar en MQTT
